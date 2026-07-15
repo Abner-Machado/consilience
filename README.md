@@ -123,6 +123,21 @@ fully offline — no Ollama or network access is needed.
   audits the whole vault at once and works from the command line or an MCP
   client, with no plugin and no Obsidian instance running.
 
+## Troubleshooting
+
+`index` is the only step that talks to Ollama, so that is where setup problems
+surface:
+
+- **`Cannot reach Ollama ...`** — Ollama is not running. Start it with `ollama
+  serve`. If it listens on a non-default address, point Consilience at it with
+  `OLLAMA_HOST=http://host:port`.
+- **`Model '...' is not available`** — the embedding model was never pulled. Run
+  `ollama pull nomic-embed-text`, or set `CONSILIENCE_MODEL` to a model you
+  already have.
+
+`suggest` reads the existing index and never contacts Ollama, so it keeps working
+offline once a vault has been indexed.
+
 ## Limits
 
 Stated plainly, because they matter:
