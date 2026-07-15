@@ -103,6 +103,18 @@ answering.
 
 The full design is in [SPEC.md](SPEC.md).
 
+## Development
+
+Install the package with its test dependencies and run the suite:
+
+```bash
+pip install -e ".[dev]"
+pytest
+```
+
+The tests in `tests/` cover the vault parser and the suggestion engine, and run
+fully offline — no Ollama or network access is needed.
+
 ## Where it fits
 
 - **Obsidian's official CLI** and plugins like *Vault Inspector* handle broken
